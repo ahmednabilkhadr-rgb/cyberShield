@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CyberShield URL Security Analysis Lab" />
+    <title>CyberShield | URL Security Lab</title>
+
+    <link rel="stylesheet" href="../css/login-demo.css" />
+    <script src="../js/login-demo.js" defer></script>
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <a href="../index.html" class="nav-brand"> CYBER<span>SHIELD</span> </a>
+
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="../index.html">Home</a>
+        <a href="login-demo.html" class="active">URL Security Lab</a>
+        <a href="url-awareness.html">URL Awareness</a>
+        <a href="../defense/domain-monitoring.html">Domain Monitoring</a>
+        <a href="../defense/certificate-validation.html">Certificate</a>
+        <a href="../defense/mfa.html">MFA</a>
+      </div>
+    </nav>
+
+    <main class="lab-container">
+      <header class="lab-header">
+        <span class="module-tag">ETHICAL HACKING / MODULE 01</span>
+
+        <h1>URL SECURITY ANALYZER</h1>
+
+        <p>
+          Advanced local analysis for suspicious URLs, domain identity and
+          website spoofing indicators.
+        </p>
+      </header>
+
+      <!-- Analysis Environment -->
+
+      <section class="simulation-panel">
+        <div class="panel-header">
+          <div class="panel-title">
+            <span class="live-indicator"></span>
+            SECURITY ANALYSIS ENGINE
+          </div>
+
+          <span class="environment-label"> LOCAL ANALYSIS </span>
+        </div>
+
+        <div class="analyzer-content">
+          <div class="section-heading">
+            <span class="module-tag">01 / INPUT</span>
+            <h2>Target URL Inspection</h2>
+
+            <p>
+              Enter a URL to inspect its structure and identify suspicious
+              characteristics.
+            </p>
+          </div>
+
+          <form id="urlAnalysisForm" class="analysis-form">
+            <label for="targetUrl">Website URL</label>
+
+            <input
+              type="text"
+              id="targetUrl"
+              placeholder="https://portal.northstar.test"
+              autocomplete="off"
+              spellcheck="false"
+              required
+            />
+
+            <label for="trustedDomain"> Trusted Reference Domain </label>
+
+            <input
+              type="text"
+              id="trustedDomain"
+              value="portal.northstar.test"
+              autocomplete="off"
+              spellcheck="false"
+              required
+            />
+
+            <div class="form-actions">
+              <button type="submit" class="analyze-button">
+                ANALYZE URL
+                <span>→</span>
+              </button>
+
+              <button type="reset" id="clearButton" class="secondary-button">
+                CLEAR
+              </button>
+            </div>
+          </form>
+
+          <div class="sample-section">
+            <h3>Training Test Cases</h3>
+
+            <p>Use fictional test addresses to evaluate the analysis engine.</p>
+
+            <div class="sample-buttons">
+              <button
+                type="button"
+                class="sample-button"
+                data-url="https://portal.northstar.test"
+              >
+                Normal URL
+              </button>
+
+              <button
+                type="button"
+                class="sample-button"
+                data-url="http://portal.northstar.test"
+              >
+                HTTP URL
+              </button>
+
+              <button
+                type="button"
+                class="sample-button"
+                data-url="https://portal.northstar.test.evil.test"
+              >
+                Domain Suffix Test
+              </button>
+
+              <button
+                type="button"
+                class="sample-button"
+                data-url="https://portal.northstar.test@evil.test"
+              >
+                User Info Test
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Analysis Results -->
+
+      <section class="analysis-panel">
+        <div class="section-heading">
+          <span class="module-tag">02 / RESULTS</span>
+
+          <h2>Security Analysis Report</h2>
+
+          <p>Detailed findings generated from local URL inspection.</p>
+        </div>
+
+        <div id="emptyState" class="empty-state">
+          <div class="empty-icon">⌕</div>
+
+          <h3>Waiting for Analysis</h3>
+
+          <p>Submit a URL above to generate a security report.</p>
+        </div>
+
+        <div id="analysisResult" class="analysis-result" hidden>
+          <div class="result-overview">
+            <div class="risk-card">
+              <span>RISK SCORE</span>
+              <strong id="riskScore">0/100</strong>
+              <p id="riskLevel">Not analyzed</p>
+            </div>
+
+            <div class="risk-card">
+              <span>DETECTED INDICATORS</span>
+              <strong id="indicatorCount">0</strong>
+              <p>Analysis findings</p>
+            </div>
+
+            <div class="risk-card">
+              <span>DOMAIN MATCH</span>
+              <strong id="domainMatch">N/A</strong>
+              <p>Reference comparison</p>
+            </div>
+          </div>
+
+          <div class="report-section">
+            <h3>URL Structure</h3>
+
+            <div class="url-details">
+              <div>
+                <span>Protocol</span>
+                <strong id="protocolValue">-</strong>
+              </div>
+
+              <div>
+                <span>Hostname</span>
+                <strong id="hostnameValue">-</strong>
+              </div>
+
+              <div>
+                <span>Path</span>
+                <strong id="pathValue">-</strong>
+              </div>
+
+              <div>
+                <span>Query Parameters</span>
+                <strong id="queryValue">-</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="report-section">
+            <h3>Security Indicators</h3>
+
+            <div id="indicatorList" class="indicator-list"></div>
+          </div>
+
+          <div class="report-section">
+            <h3>Security Recommendations</h3>
+
+            <ul id="recommendationList" class="recommendation-list"></ul>
+          </div>
+
+          <div class="report-footer">
+            <p id="analysisTimestamp"></p>
+
+            <button
+              type="button"
+              id="exportReportButton"
+              class="secondary-button"
+            >
+              EXPORT REPORT
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Educational Scenarios -->
+
+      <section class="analysis-panel">
+        <div class="section-heading">
+          <span class="module-tag">03 / KNOWLEDGE</span>
+
+          <h2>Website Spoofing Indicators</h2>
+
+          <p>
+            Common URL characteristics that security analysts should inspect
+            during website identity verification.
+          </p>
+        </div>
+
+        <div class="domain-comparison">
+          <div class="domain-card">
+            <span class="domain-status">DOMAIN IDENTITY</span>
+
+            <h3>Lookalike Domains</h3>
+
+            <p>
+              Similar-looking domain names may create confusion about the
+              identity of a website.
+            </p>
+          </div>
+
+          <div class="domain-card">
+            <span class="domain-status">URL STRUCTURE</span>
+
+            <h3>Misleading URL Components</h3>
+
+            <p>
+              User information, unusual subdomains and encoded characters may
+              hide the actual destination.
+            </p>
+          </div>
+
+          <div class="domain-card">
+            <span class="domain-status">PROTOCOL SECURITY</span>
+
+            <h3>HTTPS Inspection</h3>
+
+            <p>
+              HTTPS protects the connection, but does not independently prove
+              that a website is trustworthy.
+            </p>
+          </div>
+
+          <div class="domain-card">
+            <span class="domain-status">UNICODE SECURITY</span>
+
+            <h3>Homograph Indicators</h3>
+
+            <p>
+              Some characters from different writing systems can look similar
+              and make domain names confusing.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="lab-footer">
+        CYBERSHIELD SECURITY LAB
+
+        <span> AUTHORIZED EDUCATIONAL ENVIRONMENT </span>
+      </footer>
+    </main>
+
+    <script src="../js/audit-integration.js" defer></script>
+  </body>
+</html>

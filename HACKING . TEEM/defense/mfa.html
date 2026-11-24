@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CyberShield | MFA Defense</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+
+  <body class="lab-page">
+    <nav class="navbar">
+      <div class="logo">CYBER<span>SHIELD</span></div>
+
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../attack-simulation/url-awareness.html">URL Awareness</a>
+        <a href="domain-monitoring.html">Domain Monitoring</a>
+        <a href="certificate-validation.html">Certificate Validation</a>
+        <a href="mfa.html">MFA Defense</a>
+        <a href="audit-dashboard.html">Audit Dashboard</a>
+      </div>
+    </nav>
+
+    <main class="certificate-page">
+      <header class="lab-header">
+        <p class="eyebrow">DEFENSE / AUTHENTICATION</p>
+
+        <h1>MULTI-FACTOR <span>AUTHENTICATION</span></h1>
+
+        <p>Explore how SMS-based verification adds another security layer.</p>
+      </header>
+
+      <section class="lab-card">
+        <div class="card-top">
+          <h2>MFA SECURITY LAB</h2>
+          <span class="terminal-status">● SMS SIMULATION</span>
+        </div>
+
+        <div class="monitor-intro">
+          <h3>STEP 01 — USER INFORMATION</h3>
+          <p>Enter fictional training information.</p>
+        </div>
+
+        <form id="mfaForm">
+          <input
+            type="text"
+            id="demoUsername"
+            placeholder="Enter demo username"
+            maxlength="30"
+            required
+          />
+
+          <input
+            type="tel"
+            id="demoPhone"
+            placeholder="Enter demo phone number"
+            maxlength="15"
+            inputmode="numeric"
+            required
+          />
+
+          <button type="submit" class="analyze-btn">SEND SIMULATED SMS</button>
+        </form>
+
+        <div id="smsSection" hidden>
+          <div class="monitor-intro">
+            <h3>STEP 02 — SMS INBOX</h3>
+            <p>Your simulated verification message.</p>
+          </div>
+
+          <div class="sms-message-card">
+            <div class="sms-header">
+              <span>CYBERSHIELD MESSAGES</span>
+              <span class="sms-status">● RECEIVED</span>
+            </div>
+
+            <div class="sms-content">
+              <p class="sms-sender">CyberShield</p>
+
+              <p id="smsPhone"></p>
+
+              <p class="sms-message-text">Your verification code is:</p>
+
+              <h2 id="smsCode">------</h2>
+
+              <p class="sms-expiry">Expires in 60 seconds</p>
+            </div>
+
+            <p class="sms-demo-warning">
+              TRAINING SIMULATION — NO REAL SMS SENT
+            </p>
+          </div>
+
+          <form id="otpForm">
+            <input
+              type="text"
+              id="otpInput"
+              placeholder="Enter 6-digit verification code"
+              maxlength="6"
+              inputmode="numeric"
+              autocomplete="off"
+              required
+            />
+
+            <button type="submit" class="analyze-btn">VERIFY CODE</button>
+          </form>
+        </div>
+
+        <div id="mfaResult" class="analysis-result" aria-live="polite">
+          <p class="result-placeholder">Waiting for authentication...</p>
+        </div>
+      </section>
+
+      <section class="learning-section">
+        <h2>WHY MFA MATTERS</h2>
+
+        <div class="warning-grid">
+          <div class="warning-card">
+            <h3>Something You Know</h3>
+            <p>A password or PIN.</p>
+          </div>
+
+          <div class="warning-card">
+            <h3>Something You Have</h3>
+            <p>A registered device or authenticator.</p>
+          </div>
+
+          <div class="warning-card">
+            <h3>Extra Protection</h3>
+            <p>A second authentication factor adds another security layer.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="../js/mfa-defense.js"></script>
+    <script src="../js/audit-integration.js" defer></script>
+  </body>
+</html>

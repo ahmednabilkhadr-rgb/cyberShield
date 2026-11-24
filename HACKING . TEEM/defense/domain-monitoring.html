@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CyberShield | Domain Monitoring</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+
+  <body class="lab-page">
+    <nav class="navbar">
+      <div class="logo">CYBER<span>SHIELD</span></div>
+
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../attack-simulation/url-awareness.html">URL Awareness</a>
+        <a href="domain-monitoring.html">Domain Monitoring</a>
+        <a href="certificate-validation.html">Certificate Validation</a>
+        <a href="./mfa.html">MFA Defense</a>
+        <a href="audit-dashboard.html">Audit Dashboard</a>
+      </div>
+    </nav>
+
+    <main class="certificate-page">
+      <header class="lab-header">
+        <p class="eyebrow">DEFENSE / DOMAIN MONITORING</p>
+        <h1>DOMAIN <span>INTELLIGENCE</span></h1>
+        <p>Analyze and compare suspicious domain names.</p>
+      </header>
+
+      <section class="lab-card">
+        <div class="card-top">
+          <h2>DOMAIN ANALYZER</h2>
+          <span class="terminal-status">● LOCAL ANALYSIS</span>
+        </div>
+
+        <form id="domainForm">
+          <div class="monitor-intro">
+            <h3>REFERENCE DOMAIN</h3>
+            <p>Enter the trusted domain name.</p>
+          </div>
+
+          <input
+            type="text"
+            id="originalDomain"
+            placeholder="example.com"
+            required
+          />
+
+          <div class="monitor-intro">
+            <h3>DOMAIN TO CHECK</h3>
+            <p>Enter the domain you want to compare.</p>
+          </div>
+
+          <input
+            type="text"
+            id="candidateDomain"
+            placeholder="examp1e.com"
+            required
+          />
+
+          <button type="submit" class="analyze-btn">ANALYZE DOMAIN</button>
+        </form>
+
+        <div id="domainResult" class="analysis-result" aria-live="polite">
+          <p class="result-placeholder">Waiting for domain analysis...</p>
+        </div>
+      </section>
+
+      <section class="learning-section">
+        <h2>ANALYSIS INFORMATION</h2>
+
+        <div class="warning-grid">
+          <div class="warning-card">
+            <h3>Similarity Detection</h3>
+            <p>Compares domain names using character differences.</p>
+          </div>
+
+          <div class="warning-card">
+            <h3>Domain Validation</h3>
+            <p>Checks whether the entered values have a valid domain format.</p>
+          </div>
+
+          <div class="warning-card">
+            <h3>Risk Awareness</h3>
+            <p>
+              Highlights similarities that may require manual investigation.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="../js/domain-monitoring.js"></script>
+    <script src="../js/audit-integration.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>URL Awareness | CyberShield</title>
+
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+
+  <body>
+    <main class="lab-page">
+      <nav class="navbar">
+        <div class="logo">CYBER<span>SHIELD</span></div>
+
+        <div class="nav-links">
+          <a href="../index.html">HOME</a>
+          <a href="url-awareness.html">URL AWARENESS</a>
+          <a href="../defense/domain-monitoring.html">DEFENSE</a>
+        </div>
+
+        <div class="status">● SYSTEM ONLINE</div>
+      </nav>
+
+      <section class="lab-header">
+        <p class="subtitle">CYBERSECURITY LAB / MODULE 01</p>
+
+        <h1>URL <span>INTELLIGENCE</span></h1>
+
+        <p class="description">
+          Learn how suspicious URLs can imitate trusted websites and discover
+          the warning signs before opening a link.
+        </p>
+      </section>
+
+      <section class="url-lab">
+        <div class="lab-card">
+          <div class="card-top">
+            <span>URL ANALYSIS TERMINAL</span>
+            <span class="terminal-status">EDUCATIONAL DEMO</span>
+          </div>
+
+          <h2>Inspect a Website URL</h2>
+
+          <p>
+            Enter a sample URL below to examine its structure. This demo does
+            not open websites or collect information.
+          </p>
+
+          <form id="urlForm">
+            <label for="urlInput">TARGET URL</label>
+
+            <div class="input-row">
+              <input
+                type="text"
+                id="urlInput"
+                placeholder="https://example.com"
+                autocomplete="off"
+              />
+
+              <button type="submit">ANALYZE →</button>
+            </div>
+          </form>
+
+          <div class="sample-links">
+            <span>TRY A SAMPLE:</span>
+
+            <button type="button" data-url="https://example.com">
+              SAFE EXAMPLE
+            </button>
+
+            <button type="button" data-url="http://example.com">
+              HTTP EXAMPLE
+            </button>
+
+            <button
+              type="button"
+              data-url="https://login.example.com.example.net"
+            >
+              LOOK-ALIKE EXAMPLE
+            </button>
+          </div>
+
+          <div id="analysisResult" class="analysis-result">
+            <div class="result-placeholder">
+              <span>◈</span>
+              <p>AWAITING URL INPUT...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="learning-section">
+        <p class="subtitle">KNOW THE THREAT</p>
+
+        <h2>What is URL Spoofing?</h2>
+
+        <p>
+          URL spoofing is a deceptive technique in which a link or domain is
+          designed to look similar to a legitimate website. It may trick
+          visitors into trusting the wrong destination.
+        </p>
+
+        <div class="warning-grid">
+          <article class="warning-card">
+            <span>01</span>
+            <h3>Look-alike Domains</h3>
+            <p>
+              A domain may use a name that resembles a trusted organization.
+            </p>
+          </article>
+
+          <article class="warning-card">
+            <span>02</span>
+            <h3>Suspicious Subdomains</h3>
+            <p>
+              The real registered domain may appear at the end of a long
+              address.
+            </p>
+          </article>
+
+          <article class="warning-card">
+            <span>03</span>
+            <h3>Unexpected Links</h3>
+            <p>
+              Unrequested messages containing links deserve extra attention.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <footer class="lab-footer">
+        CYBERSHIELD © 2026 | EDUCATIONAL SECURITY LAB
+      </footer>
+    </main>
+
+    <script src="../js/url-awareness.js"></script>
+    <script src="../js/audit-integration.js" defer></script>
+  </body>
+</html>

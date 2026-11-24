@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="CyberShield defensive domain similarity analysis lab."
+    />
+    <title>CyberShield | Domain Similarity Lab</title>
+
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/typosquatting-demo.css" />
+
+    <script src="../js/audit-integration.js" defer></script>
+    <script src="../js/typosquatting-demo.js" defer></script>
+  </head>
+
+  <body>
+    <header class="main-header">
+      <a href="../index.html" class="brand"> CYBERSHIELD<span>.</span> </a>
+
+      <nav class="main-nav">
+        <a href="../index.html">HOME</a>
+        <a href="typosquatting-demo.html">URL AWARENESS</a>
+        <a href="url-awareness.html">URL AWARENESS</a>
+
+        <a href="../defense/domain-monitoring.html">DEFENSE</a>
+      </nav>
+    </header>
+
+    <main class="typo-container">
+      <section class="typo-hero">
+        <span class="eyebrow">DEFENSIVE SECURITY MODULE</span>
+
+        <h1>DOMAIN SIMILARITY LAB</h1>
+
+        <p>
+          Analyze suspicious domain names and identify similarities that may
+          indicate domain impersonation.
+        </p>
+
+        <div class="module-status">
+          <span class="status-dot"></span>
+          LOCAL ANALYSIS ENGINE
+        </div>
+      </section>
+
+      <section class="analysis-layout">
+        <div class="analysis-card">
+          <div class="card-heading">
+            <span>01 / DOMAIN INPUT</span>
+            <span class="card-icon">⌘</span>
+          </div>
+
+          <form id="domainForm">
+            <label for="trustedDomain"> Reference Domain </label>
+
+            <input
+              type="text"
+              id="trustedDomain"
+              placeholder="example.test"
+              value="example.test"
+              maxlength="253"
+              required
+            />
+
+            <label for="candidateDomain"> Candidate Domain </label>
+
+            <input
+              type="text"
+              id="candidateDomain"
+              placeholder="examp1e.test"
+              maxlength="253"
+              required
+            />
+
+            <button type="submit" id="analyzeBtn">
+              ANALYZE DOMAIN
+              <span>→</span>
+            </button>
+          </form>
+
+          <div class="sample-section">
+            <p>TRAINING SCENARIOS</p>
+
+            <div class="sample-buttons">
+              <button type="button" data-sample="similar">Similar Name</button>
+
+              <button type="button" data-sample="different">
+                Different Name
+              </button>
+
+              <button type="button" data-sample="typo">
+                Typographical Variation
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="results-card">
+          <div class="card-heading">
+            <span>02 / ANALYSIS REPORT</span>
+            <span class="live-label">LIVE RESULTS</span>
+          </div>
+
+          <div id="emptyState" class="empty-state">
+            <div class="empty-symbol">⌕</div>
+            <h2>AWAITING ANALYSIS</h2>
+            <p>
+              Submit two domain names to generate a local similarity report.
+            </p>
+          </div>
+
+          <div id="analysisResult" hidden>
+            <div class="similarity-header">
+              <span>SIMILARITY SCORE</span>
+              <strong id="similarityScore">0%</strong>
+            </div>
+
+            <div class="progress-track">
+              <div id="similarityBar"></div>
+            </div>
+
+            <div class="risk-panel">
+              <span>ASSESSMENT</span>
+              <strong id="riskLevel">NOT ANALYZED</strong>
+            </div>
+
+            <div class="comparison-grid">
+              <div>
+                <span>REFERENCE</span>
+                <strong id="referenceOutput">-</strong>
+              </div>
+
+              <div>
+                <span>CANDIDATE</span>
+                <strong id="candidateOutput">-</strong>
+              </div>
+            </div>
+
+            <div class="findings-section">
+              <h3>DETECTION FINDINGS</h3>
+              <ul id="findingsList"></ul>
+            </div>
+
+            <div class="recommendations-section">
+              <h3>SECURITY RECOMMENDATIONS</h3>
+              <p id="recommendationText"></p>
+            </div>
+
+            <button type="button" id="exportReport">
+              EXPORT ANALYSIS REPORT
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="methodology-card">
+        <span>ANALYSIS METHODOLOGY</span>
+
+        <h2>How the detection works</h2>
+
+        <p>
+          This educational module compares normalized domain strings using
+          character-level similarity and basic structural checks. Results are
+          indicators, not proof of malicious activity.
+        </p>
+      </section>
+    </main>
+
+    <footer class="typo-footer">
+      CYBERSHIELD SECURITY LAB
+      <span>LOCAL EDUCATIONAL ENVIRONMENT</span>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CyberShield | Certificate Validation</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+
+  <body class="lab-page">
+    <nav class="navbar">
+      <div class="logo">CYBER<span>SHIELD</span></div>
+
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../attack-simulation/url-awareness.html">URL Awareness</a>
+        <a href="domain-monitoring.html">Domain Monitoring</a>
+        <a href="certificate-validation.html">Certificate Validation</a>
+        <a href="audit-dashboard.html">Audit Dashboard</a>
+      </div>
+    </nav>
+
+    <main class="certificate-page">
+      <header class="lab-header">
+        <p class="eyebrow">DEFENSE / SSL & TLS</p>
+        <h1>CERTIFICATE <span>VALIDATION</span></h1>
+        <p>Test different SSL/TLS certificate security scenarios.</p>
+      </header>
+
+      <section class="lab-card">
+        <div class="card-top">
+          <h2>CERTIFICATE INSPECTOR</h2>
+          <span class="terminal-status">● LOCAL SIMULATION</span>
+        </div>
+
+        <div class="monitor-intro">
+          <h3>SELECT TEST SCENARIO</h3>
+          <p>Choose a certificate scenario to simulate its validation.</p>
+        </div>
+
+        <select id="certificateScenario">
+          <option value="valid">Valid Certificate</option>
+          <option value="expired">Expired Certificate</option>
+          <option value="mismatch">Domain Mismatch</option>
+          <option value="untrusted">Untrusted Issuer</option>
+        </select>
+
+        <div class="certificate-reference">
+          <p>TEST DOMAIN</p>
+          <strong>example.com</strong>
+        </div>
+
+        <button id="certificateCheckBtn" class="analyze-btn">
+          RUN CERTIFICATE TEST
+        </button>
+
+        <div id="certificateResult" class="analysis-result" aria-live="polite">
+          <p class="result-placeholder">Waiting for certificate test...</p>
+        </div>
+      </section>
+
+      <section class="learning-section">
+        <h2>WHAT ARE WE CHECKING?</h2>
+
+        <div class="warning-grid">
+          <div class="warning-card">
+            <h3>Expiration</h3>
+            <p>Checks whether the certificate is within its validity period.</p>
+          </div>
+
+          <div class="warning-card">
+            <h3>Domain Match</h3>
+            <p>
+              Checks whether the certificate belongs to the requested hostname.
+            </p>
+          </div>
+
+          <div class="warning-card">
+            <h3>Trusted Issuer</h3>
+            <p>Checks whether the certificate issuer is trusted.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="../js/certificate-validation.js"></script>
+    <script src="../js/audit-integration.js" defer></script>
+  </body>
+</html>

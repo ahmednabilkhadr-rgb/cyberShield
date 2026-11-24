@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CyberShield | Red Team vs Blue Team</title>
+
+    <link rel="stylesheet" href="../css/red-team-lab.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+        <div class="logo">
+            CYBERSHIELD<span>.</span>
+        </div>
+
+        <nav class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="red-team-lab.html">Red Team Lab</a>
+            <a href="../defense/audit-dashboard.html">Audit Dashboard</a>
+        </nav>
+
+        <div class="server-indicator">
+            <span id="serverDot" class="offline"></span>
+            <span id="serverStatus">SERVER OFFLINE</span>
+        </div>
+    </header>
+
+
+    <main class="container">
+
+        <!-- PAGE HEADER -->
+
+        <section class="page-header">
+            <div>
+                <p class="eyebrow">CYBERSHIELD SECURITY ENVIRONMENT</p>
+                <h1>Red Team <span>vs</span> Blue Team</h1>
+                <p>
+                    Local authentication testing and defensive monitoring.
+                </p>
+            </div>
+
+            <div class="environment-badge">
+                LOCAL DEMO ENVIRONMENT
+            </div>
+        </section>
+
+
+        <!-- ACCOUNT CREATION -->
+
+        <section class="panel account-panel">
+
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">IDENTITY MANAGEMENT</p>
+                    <h2>Demo Account Setup</h2>
+                </div>
+
+                <span id="accountStatus" class="status-normal">
+                    NOT CREATED
+                </span>
+            </div>
+
+            <p class="section-description">
+                Create a local demonstration account before starting
+                the Red Team login test.
+            </p>
+
+            <form id="createAccountForm">
+
+                <div class="form-group">
+                    <label for="createUsername">Demo Username</label>
+
+                    <input
+                        type="text"
+                        id="createUsername"
+                        placeholder="Enter a demo username"
+                        minlength="3"
+                        maxlength="24"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="createPassword">Demo Password</label>
+
+                    <input
+                        type="password"
+                        id="createPassword"
+                        placeholder="Create a demo password"
+                        minlength="8"
+                        maxlength="128"
+                        required
+                    >
+                </div>
+
+                <button
+                    type="submit"
+                    id="createAccountButton"
+                    class="primary-button"
+                >
+                    CREATE DEMO ACCOUNT
+                </button>
+
+            </form>
+
+            <div id="accountResult" class="result"></div>
+
+            <div class="account-information">
+                <span>Account Type</span>
+                <strong>Local Educational Account</strong>
+
+                <span>Password Storage</span>
+                <strong>Secure Password Hash</strong>
+            </div>
+
+        </section>
+
+
+        <!-- MAIN WORKSPACE -->
+
+        <section class="workspace">
+
+            <!-- RED TEAM -->
+
+            <div class="panel red-panel">
+
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">SECURITY TESTING</p>
+                        <h2>Red Team</h2>
+                    </div>
+
+                    <span class="team-label red-label">
+                        TESTING
+                    </span>
+                </div>
+
+                <p class="section-description">
+                    Run a controlled login test against the local demo account.
+                </p>
+
+                <form id="loginForm">
+
+                    <div class="form-group">
+                        <label for="username">Target Username</label>
+
+                        <input
+                            type="text"
+                            id="username"
+                            placeholder="Demo account username"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Test Password</label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Enter test password"
+                            required
+                        >
+                    </div>
+
+                    <button
+                        type="submit"
+                        id="loginButton"
+                        class="danger-button"
+                        disabled
+                    >
+                        RUN LOGIN TEST
+                    </button>
+
+                </form>
+
+                <div id="loginResult" class="result"></div>
+
+                <div class="test-information">
+                    <h3>Test Environment</h3>
+
+                    <p>Target: Local Demo Account</p>
+                    <p>Endpoint: /api/lab/login</p>
+                    <p>Maximum failed attempts: 5</p>
+                    <p>Environment: Localhost only</p>
+                </div>
+
+            </div>
+
+
+            <!-- BLUE TEAM -->
+
+            <div class="panel blue-panel">
+
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">DEFENSIVE OPERATIONS</p>
+                        <h2>Blue Team</h2>
+                    </div>
+
+                    <span class="team-label blue-label">
+                        DEFENDING
+                    </span>
+                </div>
+
+                <p class="section-description">
+                    Monitor authentication activity and defensive responses.
+                </p>
+
+                <div class="metric-card">
+                    <span>Account Status</span>
+
+                    <strong id="blueAccountStatus">
+                        NOT CREATED
+                    </strong>
+                </div>
+
+                <div class="metric-card">
+                    <span>Detection Status</span>
+
+                    <strong id="detectionStatus">
+                        WAITING
+                    </strong>
+                </div>
+
+                <div class="metric-card">
+                    <span>Failed Attempts</span>
+
+                    <strong id="failedAttempts">0</strong>
+                </div>
+
+                <div class="metric-card">
+                    <span>Remaining Attempts</span>
+
+                    <strong id="remainingAttempts">5</strong>
+                </div>
+
+                <div class="defense-card">
+                    <h3>Defensive Action</h3>
+
+                    <p id="defenseAction">
+                        Waiting for account creation and security activity.
+                    </p>
+                </div>
+
+                <div class="defense-card">
+                    <h3>Lockout Status</h3>
+
+                    <p id="lockoutStatus">
+                        No active lock.
+                    </p>
+                </div>
+
+                <button
+                    type="button"
+                    id="resetLab"
+                    class="secondary-button"
+                >
+                    RESET FAILED ATTEMPTS
+                </button>
+
+                <button
+                    type="button"
+                    id="deleteAccount"
+                    class="secondary-button"
+                >
+                    DELETE DEMO ACCOUNT
+                </button>
+
+                <div id="resetResult" class="result"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SECURITY EVENTS -->
+
+        <section class="panel events-panel">
+
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">SECURITY MONITORING</p>
+                    <h2>Security Events</h2>
+                </div>
+
+                <span id="eventCount" class="event-count">
+                    0 EVENTS
+                </span>
+            </div>
+
+            <p class="section-description">
+                Recorded events generated by the local security lab.
+            </p>
+
+            <div class="table-wrapper">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Timestamp</th>
+                            <th>Event</th>
+                            <th>Severity</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="eventsTable">
+                        <tr>
+                            <td colspan="4" class="empty">
+                                Waiting for security events.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <button
+                type="button"
+                id="refreshEvents"
+                class="outline-button"
+            >
+                REFRESH SECURITY EVENTS
+            </button>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer class="footer">
+            <p>
+                CYBERSHIELD SECURITY PROJECT
+            </p>
+
+            <span>
+                Local Educational Environment
+            </span>
+        </footer>
+
+    </main>
+
+
+    <script src="../js/red_team_lab.js"></script>
+
+</body>
+</html>
